@@ -43,6 +43,8 @@ const Layout: React.FC<LayoutProps> = ({ children, user, onLogout, searchTerm, s
     if (!showNotifications) onMarkRead();
   };
 
+  const avatarSrc = user.avatarUrl || `https://picsum.photos/seed/${user.id}/100/100`;
+
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
       {/* Sidebar */}
@@ -171,7 +173,7 @@ const Layout: React.FC<LayoutProps> = ({ children, user, onLogout, searchTerm, s
                 <p className="text-xs text-slate-500 leading-none mt-1">{user.role}</p>
               </div>
               <div className="w-10 h-10 rounded-full bg-sky-100 border border-sky-200 flex items-center justify-center text-sky-700 font-bold overflow-hidden ring-0 group-hover:ring-2 ring-sky-500/20 transition-all">
-                <img src={`https://picsum.photos/seed/${user.id}/100/100`} alt="Avatar" />
+                <img src={avatarSrc} alt="Avatar" className="w-full h-full object-cover" />
               </div>
             </Link>
           </div>

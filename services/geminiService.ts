@@ -1,5 +1,5 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 import { DrugAnalysis, SystemSettings } from "../types";
 
 export const getClinicalExplanation = async (analysis: DrugAnalysis, settings: SystemSettings): Promise<string> => {
@@ -29,8 +29,9 @@ export const getClinicalExplanation = async (analysis: DrugAnalysis, settings: S
   `;
 
   try {
+    // Using gemini-3-pro-preview for complex clinical reasoning tasks
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3-pro-preview',
       contents: prompt,
     });
     return response.text || "No explanation generated.";
